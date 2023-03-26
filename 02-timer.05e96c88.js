@@ -1,2 +1,0 @@
-!function(){var e=document.querySelector(".timer");document.querySelector(".field"),document.querySelector("#datetime-picker"),document.querySelector("[data-days]"),document.querySelector("[data-hours]"),document.querySelector("[data-minutes]"),document.querySelector("[data-seconds]");e.style.display="flex",e.style.justifyContent="space-evenly",e.style.fontSize="20px"}();
-//# sourceMappingURL=02-timer.05e96c88.js.map
