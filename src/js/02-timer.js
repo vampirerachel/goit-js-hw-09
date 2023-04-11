@@ -32,7 +32,7 @@ const fp = flatpickr(inputEl, {
             let currentDate = new Date().getTime()
             let dateDiff = selectedDate - currentDate
             if ((dateDiff) > 0) {
-                let convertedDateDisplay = (convertMs(dateDiff.toString()))
+                let convertedDateDisplay = (convertMs(dateDiff))
                 daysEl.innerText = addLeadingZero(convertedDateDisplay.days)
                 hoursEl.innerText = addLeadingZero(convertedDateDisplay.hours);
                 minutesEl.innerText = addLeadingZero(convertedDateDisplay.minutes);
@@ -47,25 +47,19 @@ const fp = flatpickr(inputEl, {
 function addLeadingZero(value) {
     let stringValue = value.toString();
     if (stringValue.length = 1) {
+        console.log(stringValue)
     return stringValue.toString().padStart(2, "0")
 }
 }
 function convertMs(ms) {
-  // Number of milliseconds per unit of time
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
   const day = hour * 24;
-
-  // Remaining days
   const days = Math.floor(ms / day);
-  // Remaining hours
   const hours = Math.floor((ms % day) / hour);
-  // Remaining minutes
   const minutes = Math.floor(((ms % day) % hour) / minute);
-  // Remaining seconds
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-
   return { days, hours, minutes, seconds };
 }
 let timerId
@@ -80,7 +74,7 @@ const handleClick = function countDown() {
         
 
         if ((dateDiff) > 0) {
-            let convertedDateDisplay = (convertMs(dateDiff.toString()))
+            let convertedDateDisplay = (convertMs(dateDiff))
         daysEl.innerText = addLeadingZero(convertedDateDisplay.days)
         hoursEl.innerText = addLeadingZero(convertedDateDisplay.hours);
         minutesEl.innerText = addLeadingZero(convertedDateDisplay.minutes);
