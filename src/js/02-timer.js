@@ -41,8 +41,9 @@ onClose(selectedDates) {
 
 
 function addLeadingZero(value) {
-    if (value.length = 1) {
-    return value.toString().padStart(2, "0")
+    let stringValue = value.toString();
+    if (stringValue.length = 1) {
+    return stringValue.padStart(2, "0")
 }
 }
 function convertMs(ms) {
