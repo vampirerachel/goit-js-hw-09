@@ -65,18 +65,22 @@ function convertMs(ms) {
 }
 let timerId
 const handleClick = function countDown() {
-    let date = fp.latestSelectedDateObj.getTime()
-    let d = new Date().getTime()
+
     timerId = setInterval(() => {
-        if ((date - d) > 0) {
-            let counter = (date - d) - 1000;
-            let convertedDateDisplay = (convertMs(counter))
-            console.log(counter)
+    let selectedDate = fp.latestSelectedDateObj.getTime()
+    let currentDate = new Date().getTime()
+    let dateDiff = selectedDate - currentDate
+        if ((dateDiff) > 0) {
+            let convertedDateDisplay = (convertMs(dateDiff))
+            console.log(dateDiff)
         daysEl.innerText = addLeadingZero(convertedDateDisplay.days)
         hoursEl.innerText = addLeadingZero(convertedDateDisplay.hours);
         minutesEl.innerText = addLeadingZero(convertedDateDisplay.minutes);
         secondsEl.innerText = addLeadingZero(convertedDateDisplay.seconds);
             
+        }else {
+            clearInterval(timerId)
+            alert('the time is over')
         }
         
     }, 1000);
