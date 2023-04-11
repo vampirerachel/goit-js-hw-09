@@ -17,33 +17,37 @@ timerEl.style.justifyContent = "space-evenly";
 
 
 const fp = flatpickr(inputEl, {
-enableTime: true,
-time_24hr: true,
-defaultDate: new Date(),
-minuteIncrement: 1,
-onClose(selectedDates) {
-    if (selectedDates[0] <= new Date()) {
-        startButtonEl.setAttribute('disabled', '');
-        alert("Please choose a date in the future");
+    enableTime: true,
+    time_24hr: true,
+    defaultDate: new Date(),
+    minuteIncrement: 1,
+    onClose(selectedDates) {
+        if (selectedDates[0] <= new Date()) {
+            startButtonEl.setAttribute('disabled', '');
+            alert("Please choose a date in the future");
+        }
+        else {
+            startButtonEl.removeAttribute('disabled', '');
+            let selectedDate = selectedDates[0].getTime()
+            let currentDate = new Date().getTime()
+            let dateDiff = selectedDate - currentDate
+            if ((dateDiff) > 0) {
+                let convertedDateDisplay = (convertMs(dateDiff))
+                daysEl.innerText = addLeadingZero(convertedDateDisplay.days)
+                hoursEl.innerText = addLeadingZero(convertedDateDisplay.hours);
+                minutesEl.innerText = addLeadingZero(convertedDateDisplay.minutes);
+                secondsEl.innerText = addLeadingZero(convertedDateDisplay.seconds);
+            };
+        }
     }
-    else {
-        startButtonEl.removeAttribute('disabled', '');
-        let convertedDateMs = selectedDates[0].getTime()
-        let difference = (convertedDateMs - new Date().getTime())
-        let convertedDateDisplay = (convertMs(difference))
-        daysEl.innerText = addLeadingZero(convertedDateDisplay.days)
-        hoursEl.innerText = addLeadingZero(convertedDateDisplay.hours);
-        minutesEl.innerText = addLeadingZero(convertedDateDisplay.minutes);
-        secondsEl.innerText = addLeadingZero(convertedDateDisplay.seconds)
-    };
-    },
 });
+
 
 
 function addLeadingZero(value) {
     let stringValue = value.toString();
     if (stringValue.length = 1) {
-    return stringValue.padStart(2, "0")
+    return stringValue.toString().padStart(2, "0")
 }
 }
 function convertMs(ms) {
@@ -68,12 +72,15 @@ let timerId
 const handleClick = function countDown() {
 
     timerId = setInterval(() => {
+
+
     let selectedDate = fp.latestSelectedDateObj.getTime()
     let currentDate = new Date().getTime()
-    let dateDiff = selectedDate - currentDate
+        let dateDiff = selectedDate - currentDate
+        
+
         if ((dateDiff) > 0) {
             let convertedDateDisplay = (convertMs(dateDiff))
-            console.log(dateDiff)
         daysEl.innerText = addLeadingZero(convertedDateDisplay.days)
         hoursEl.innerText = addLeadingZero(convertedDateDisplay.hours);
         minutesEl.innerText = addLeadingZero(convertedDateDisplay.minutes);
@@ -84,7 +91,8 @@ const handleClick = function countDown() {
             alert('the time is over')
         }
         
-    }, 1000);
+    }, 1000)
+    }
     
-}
-startButtonEl.addEventListener("click", (handleClick))
+
+    startButtonEl.addEventListener("click", (handleClick));
