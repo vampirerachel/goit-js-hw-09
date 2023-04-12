@@ -14,7 +14,13 @@ let startButtonEl = document.querySelector("[data-start]")
 timerEl.style.display = "flex";
 timerEl.style.justifyContent = "space-evenly";
 
-
+function addLeadingZero(value) {
+    let stringValue = value.toString();
+    let stringLength = stringValue.length
+    if (stringLength = 1) {
+    return stringValue.padStart(2, "0")
+}
+}
 
 const fp = flatpickr(inputEl, {
     enableTime: true,
@@ -43,13 +49,6 @@ const fp = flatpickr(inputEl, {
 });
 
 
-
-function addLeadingZero(value) {
-    let stringValue = value.toString();
-    if (stringValue.length = 1) {
-    return stringValue.padStart(2, "0")
-}
-}
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
