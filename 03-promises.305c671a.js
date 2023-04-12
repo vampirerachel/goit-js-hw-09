@@ -1,2 +1,0 @@
-let e=document.querySelector(".form"),t=document.querySelector('input[name="delay"]'),o=document.querySelector('input[name="step"]'),n=document.querySelector('input[name="amount"]');e.addEventListener("submit",(function(e){e.preventDefault();for(let e=0;e<n.value;e++)setTimeout((()=>{var o,n;(o=e,n=t.value,new Promise(((e,t)=>{const u=Math.random()>.3;setTimeout((()=>{u?e({position:o,delay:n}):t({position:o,delay:n})}),n)}))).then(((e,t)=>{console.log("the position is ${position} and the value is ${delay}")}))}),o)}));
-//# sourceMappingURL=03-promises.305c671a.js.map
