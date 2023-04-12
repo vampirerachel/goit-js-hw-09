@@ -46,9 +46,8 @@ const fp = flatpickr(inputEl, {
 
 function addLeadingZero(value) {
     let stringValue = value.toString();
-    if (value.length = 1) {
-        console.log(stringValue)
-    return stringValue.toString().padStart(2, "0")
+    if (stringValue.length = 1) {
+    return stringValue.padStart(2, "0")
 }
 }
 function convertMs(ms) {
