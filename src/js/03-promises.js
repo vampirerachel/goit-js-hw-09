@@ -11,13 +11,13 @@ function handleSubmit(e) {
     createPromise(i, firstDelay.value)
       .then((position, delay) => {
         setTimeout(() => {
-          console.log('(✅ Fulfilled promise) the position is ${position} and the value is ${delay}'
+          console.log('(✅ Fulfilled promise)'
           );
         }, delayStep);
       })
       .catch((position, delay) => { 
         setTimeout(() => {
-          console.log(`(❌ Rejected promise)the position is ${position} and the value is ${delay}`
+          console.log(`(❌ Rejected promise)`
           );
         }, delayStep);
     })
