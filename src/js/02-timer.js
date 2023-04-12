@@ -46,7 +46,7 @@ const fp = flatpickr(inputEl, {
 
 function addLeadingZero(value) {
     let stringValue = value.toString();
-    if (stringValue.length = 1) {
+    if (value.length = 1) {
         console.log(stringValue)
     return stringValue.toString().padStart(2, "0")
 }
